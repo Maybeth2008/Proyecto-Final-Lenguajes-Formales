@@ -1,0 +1,99 @@
+import java.util.ArrayList;
+
+public class AnalisisSintactico{
+    int indice;
+    ArrayList <Token> tokens;
+    Token token_actual;
+    
+    public AnalisisSintactico(ArrayList <Token> tokens){
+        this.tokens = tokens;
+        indice =0;
+        token_actual = tokens.get(0);
+        
+    }
+    
+    public void leer(String tokenEsperado){
+        if(token_actual.tipo.equals(tokenEsperado)){
+            indice++;
+            if(indice<tokens.size()){
+                token_actual = tokens.get(indice);
+            }
+        }
+        else{
+             System.out.println("Error Sintáctico\n");
+             return;
+        }
+    }
+    
+    public void Program(){
+        RuleList();
+    }
+    
+    public void RuleList(){
+        
+        if(token_actual.tipo.equals("RULE")){
+            Rule();
+            RuleList();
+        }
+        else{
+            //epsilon
+        }
+    }
+    
+    public void Rule(){
+        leer("RULE");
+        leer("ID");
+        leer("COLON");
+        leer("IF");
+        Cond();
+        leer("THEN");
+        Action();
+    }
+    
+    public void Cond(){
+        Atom();
+        CondPrima();
+    }
+    
+    public void CondPrima(){
+        if(token_actual.tipo.equals("AND")){
+            leer("AND");
+            Atom();
+            CondPrima();
+        }
+        else{
+            //epsilon
+        }
+    }
+    
+    public void Atom(){
+        leer("ID");
+        AtomPrima();
+    }
+    
+    public void AtomPrima(){
+        if(token_actual.tipo.equals("GREATER") || token_actual.tipo.equals("LESS") || token_actual.tipo.equals("EQUAL")){
+            RelOp();
+            leer("NUMBER");
+        }
+        else{
+            //epsilon
+        }
+    }
+
+    
+    public void RelOp(){
+        if(token_actual.tipo.equals("GREATER")){
+            leer("GREATER");
+        }else if(token_actual.tipo.equals("LESS")){
+            leer("LESS");
+        }else if( token_actual.tipo.equals("EQUAL")){
+            leer("EQUAL");
+        }
+        
+    }
+    
+    public void Action(){
+        leer("ID");
+    }
+}
