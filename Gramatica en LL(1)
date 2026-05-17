@@ -1,0 +1,9 @@
+Program → RuleList
+RuleList → Rule RuleList | ε
+Rule → rule id : if Cond then Action
+Cond → Atom Cond'
+Cond' → AND Atom Cond' | ε
+Atom → id Atom'
+Atom' → RelOp value | ε
+RelOp → > | < | =
+Action → id
