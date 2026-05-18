@@ -4,6 +4,7 @@ public class AnalisisSintactico {
 	int indice;
 	ArrayList <Token> tokens;
 	Token token_actual;
+	Token token_leido;
 
 	public AnalisisSintactico(ArrayList <Token> tokens) {
 		this.tokens = tokens;
