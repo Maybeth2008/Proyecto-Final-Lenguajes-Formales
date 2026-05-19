@@ -7,11 +7,17 @@ public class Interprete{
     int real2=0;
     AnalisisLexico lexe = new AnalisisLexico();
     
+    public void agregarMap(String izqd, Integer der){
+        variable.put(izqd,der);
+    }
     
     public Interprete(AST arbol){
         int num= Integer.parseInt(arbol.condicion);
         variable.put(arbol.nombreRegla,num);
         
+    }
+    
+    public Interprete(){
     }
 
     public void evaluar(AST arbol){
@@ -71,7 +77,7 @@ public class Interprete{
                 if(resultado==true){
                     ejecutarAccion(acc);
                 }
-                return resultado;
+                return resultado; 
             default:
                 return false;
         }
@@ -103,7 +109,16 @@ public class Interprete{
                 operadores(operador, con, acc);
             }else if(con.contains("AND")){
                 String operador= "AND";
-                operadores(operador, con, acc);
+                String[] estruc_con=con.split(operador);
+                int verdadero =0;
+                for(int i=0; i< estruc_con.length; i++){
+                    int result=variable.get(estruc_con[i].trim());
+                    if(result==1)
+                    verdadero ++;
+                }
+                if(verdadero == estruc_con.length){
+                    ejecutarAccion(acc);
+                }
             }else if(con.contains("=")){
                 String operador= "=";
                 operadores(operador, con, acc);
