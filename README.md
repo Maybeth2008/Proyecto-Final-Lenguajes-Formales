@@ -6,8 +6,8 @@
 
 ## Autores
 
-- Nash Díaz Quessep
 - Maybeth López Bedoya
+- Nash Díaz Quessep
 
 
 ## Descripción del Proyecto
