@@ -1,9 +1,10 @@
 public class Token{
-
+    String tipo;
+	String valor;
+	
 	public Token(String t, String v){
-	    String tipo=t;
-	    String valor=v;
-   
+	    this.tipo=t;
+	    this.valor=v;
 	}
 	
 }	                              
