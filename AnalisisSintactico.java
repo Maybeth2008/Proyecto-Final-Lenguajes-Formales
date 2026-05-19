@@ -72,7 +72,7 @@ public class AnalisisSintactico {
 		else {
 			//epsilon
 		}
-		return null;
+		return "";
 	}
 
 	public String Atom() {
@@ -90,7 +90,7 @@ public class AnalisisSintactico {
 		else {
 			//epsilon
 		}
-		return null;
+		return "";
 	}
 
 
