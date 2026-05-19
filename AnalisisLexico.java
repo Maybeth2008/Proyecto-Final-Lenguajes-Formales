@@ -22,19 +22,21 @@ public class AnalisisLexico{
 	                else{
 	                    ProcesarLexema(lexema);
 	                    lexema=String.valueOf(simbolo);
-	                    ProcesarLexema(lexema);
+	                    ProcesarLexema(lexema); 
+	                    lexema = "";
 	                    
 	                }
    
 	            }
 	            else if(simbolo ==' '){
 	                 ProcesarLexema(lexema);
+	                 lexema = "";
 	            }
   
 	        }
 	        
 	    }
-	    if(lexema != ""){
+	    if(!lexema.isEmpty()){
 	        ProcesarLexema(lexema);
 	    }
 	    return Tokens;
@@ -44,7 +46,7 @@ public class AnalisisLexico{
 	// funcion para procesar los lexemas
 	public void ProcesarLexema(String lexe){
 	    
-        switch(lexema){
+        switch(lexe){
             case "rule":
                 String tipo0 = "RULE";
                 String valor0= "rule";
@@ -102,28 +104,28 @@ public class AnalisisLexico{
                 break;
                 
             default:
-                if(esNumero(lexema)){
+                if(esNumero(lexe)){
                     
                     String tipo8 = "NUMBER";
-                    String valor8= lexema;
+                    String valor8= lexe;
                     Token TokenNumber = new Token(tipo8, valor8); 
                     Tokens.add(TokenNumber);
                 
                 }
-                else if(esIdentificador(lexema)){
+                else if(esIdentificador(lexe)){
                     
                     String tipo9 = "ID";
-                    String valor9= lexema;
+                    String valor9= lexe;
                     Token TokenId = new Token(tipo9, valor9); 
                     Tokens.add(TokenId);
                     
                 }
             }
-            lexema = "";
+            lexema =    "";
 	    
 	} 
 	 // funcion para identificador
-    public static boolean esIdentificador(String s) {
+    public boolean esIdentificador(String s) {
 
         int estado = 0;
 
@@ -154,7 +156,7 @@ public class AnalisisLexico{
     }
     
     // funcion para numeros
-    public static boolean esNumero(String s) {
+    public boolean esNumero(String s) {
 
         int estado = 0;
 
