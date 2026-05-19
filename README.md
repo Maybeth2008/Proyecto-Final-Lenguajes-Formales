@@ -3,7 +3,6 @@
 **Materia:** Lenguajes Formales (C2566-SI2002)
 **Universidad:** EAFIT — Escuela de Ciencias Aplicadas e Ingeniería
 **Profesor:** Adolfo Andrés Castro Sánchez
-**Referencia:** Aho et al., *Compilers: Principles, Techniques & Tools*, 2da ed., Figura 3.14, Sección 3.4.2
 
 ## Autores
 
