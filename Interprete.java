@@ -88,6 +88,7 @@ public class Interprete{
     public String ejecutarAccion(String accion){
         int activo=1;
         variable.put(accion, activo);
+        System.out.println(accion);
         return accion;
     }
     
