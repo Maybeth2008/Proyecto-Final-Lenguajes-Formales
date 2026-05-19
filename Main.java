@@ -36,8 +36,6 @@ public class Main{
 		    
     		AnalisisLexico regla = new AnalisisLexico();
     		ArrayList<Token> tokens = regla.lexema(reglaActual);
-    		for(Token t : tokens){System.out.println(t.tipo + " -> " + t.valor);
-}
     		AnalisisSintactico parser = new AnalisisSintactico(tokens);
     		AST arbol=parser.Rule();    
     		interprete.evaluar(arbol);
